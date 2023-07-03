@@ -1,0 +1,78 @@
+{% extends 'backend/base.html' %}
+
+{% block title %}
+Student Table
+{% endblock %}
+
+{% block content %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Student Data Tables
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Student tables</li>
+      </ol>
+    </section>
+
+     <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Student Table</h3>
+            </div>
+              <pre><a class="btn btn-success" href="{% url 'task_create' %}">New Entry</a></pre>
+            <div class="box-body">
+                <table class="table table-bordered table-hover" id="student_data_table">
+                    <thead>
+                    <tr>
+                        <th>ROLL NUMBER</th>
+                        <th>NAME</th>
+                        <th>DOB</th>
+                        <th>ACTION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in object_list %}
+                        <tr>
+                            <td>{{ element.roll_number }}</td>
+                            <td>{{ element.name }}</td>
+                            <td>{{ element.dob }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ element.id }}/task_update">Update</a>
+                                <a class="btn btn-danger" href="{{ element.id }}/task_delete">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+    $(document).ready(function () {
+        $('#student_data_table'.Datatable());
+    });
+
+</script>
+
+{% endblock %}
+  <!-- /.content-wrapper -->

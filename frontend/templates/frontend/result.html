@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <style>
+        .table_content, thead, tbody, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h3>Roll Number   : {{ student.roll_number }}</h3>
+    <h3>Date of Birth : {{ student.dob }}</h3>
+
+    <table class="table_content">
+        <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Mark</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for element in marklist %}
+        <tr>
+            <td>{{ element.subject_name }}</td>
+            <td>{{ element.mark }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>Total Marks</td>
+            <td>{{ total_mark }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'logout_view'  %}">Logout</a>
+</center>
+
+
+
+</body>
+</html>
